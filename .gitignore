@@ -3,6 +3,9 @@
 .project
 .php_cs.cache
 
-build/
+.idea
 .settings/
 vendor/
+/.phpunit.result.cache
+/coverage/
+/.phpunit.cache/
