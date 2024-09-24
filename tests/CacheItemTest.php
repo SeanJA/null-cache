@@ -1,13 +1,10 @@
 <?php
-namespace Psr6NullCacheTest\Unit;
+namespace Tests\SeanJA\NullCache;
 
-use PHPUnit_Framework_TestCase;
-use Psr6NullCache\CacheItem;
+use PHPUnit\Framework\TestCase;
+use SeanJA\NullCache\CacheItem;
 
-/**
- * @covers Psr6NullCache\CacheItem
- */
-class CacheItemTest extends PHPUnit_Framework_TestCase
+class CacheItemTest extends TestCase
 {
 
     public function testCreateSimpleCacheItem()

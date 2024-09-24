@@ -1,14 +1,11 @@
 <?php
-namespace Psr6NullCacheTest\Unit\Adapter;
+namespace Tests\SeanJA\NullCache\Adapter;
 
-use PHPUnit_Framework_TestCase;
-use Psr6NullCache\CacheItem;
-use Psr6NullCache\Adapter\NullCacheItemPool;
+use PHPUnit\Framework\TestCase;
+use SeanJA\NullCache\CacheItem;
+use SeanJA\NullCache\Adapter\NullCacheItemPool;
 
-/**
- * @covers Psr6NullCache\Adapter\NullCacheItemPool
- */
-class NullCacheItemPoolTest extends PHPUnit_Framework_TestCase
+class NullCacheItemPoolTest extends TestCase
 {
 
     public function testGetItem()
@@ -17,7 +14,7 @@ class NullCacheItemPoolTest extends PHPUnit_Framework_TestCase
         
         $item = $pool->getItem('myKey');
         
-        $this->assertInstanceOf('Psr6NullCache\CacheItem', $item);
+        $this->assertInstanceOf(CacheItem::class, $item);
         $this->assertEquals('myKey', $item->getKey());
         // not from cache -> new object, so false!
         $this->assertFalse($item->isHit());
@@ -33,14 +30,14 @@ class NullCacheItemPoolTest extends PHPUnit_Framework_TestCase
             'myKey2'
         ]);
         
-        $this->assertInternalType('array', $items);
+        $this->assertIsArray($items);
         $this->assertCount(2, $items);
         
         $this->assertArrayHasKey('myKey', $items);
         $this->assertArrayHasKey('myKey2', $items);
         
-        $this->assertInstanceOf('Psr6NullCache\CacheItem', $items['myKey']);
-        $this->assertInstanceOf('Psr6NullCache\CacheItem', $items['myKey2']);
+        $this->assertInstanceOf(CacheItem::class, $items['myKey']);
+        $this->assertInstanceOf(CacheItem::class, $items['myKey2']);
     }
 
     public function testHasItem()

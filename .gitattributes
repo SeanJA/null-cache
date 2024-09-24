@@ -1,0 +1,12 @@
+/docker	                 export-ignore
+/tests                   export-ignore
+/.gitattributes          export-ignore
+/.gitignore              export-ignore
+/action.yml	             export-ignore
+/coverage.php	         export-ignore
+/docker-compose-test.yml export-ignore
+/Dockerfile	             export-ignore
+/phpunit.xml             export-ignore
+/TaskFile.yml	         export-ignore
+
+*.php diff=php

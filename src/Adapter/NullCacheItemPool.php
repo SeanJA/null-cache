@@ -1,9 +1,10 @@
 <?php
-namespace Psr6NullCache\Adapter;
+namespace SeanJA\NullCache\Adapter;
 
+use InvalidArgumentException;
 use Psr\Cache\CacheItemPoolInterface;
 use Psr\Cache\CacheItemInterface;
-use Psr6NullCache\CacheItem;
+use SeanJA\NullCache\CacheItem;
 
 final class NullCacheItemPool implements CacheItemPoolInterface
 {
@@ -22,7 +23,7 @@ final class NullCacheItemPool implements CacheItemPoolInterface
      *        
      * @return CacheItemInterface
      */
-    public function getItem($key)
+    public function getItem($key): CacheItemInterface
     {
         return new CacheItem($key, null, false);
     }
@@ -67,7 +68,7 @@ final class NullCacheItemPool implements CacheItemPoolInterface
      *        
      * @return bool True if item exists in the cache, false otherwise.
      */
-    public function hasItem($key)
+    public function hasItem($key): bool
     {
         return false;
     }
@@ -77,7 +78,7 @@ final class NullCacheItemPool implements CacheItemPoolInterface
      *
      * @return bool True if the pool was successfully cleared. False if there was an error.
      */
-    public function clear()
+    public function clear(): bool
     {
         return true;
     }
@@ -93,7 +94,7 @@ final class NullCacheItemPool implements CacheItemPoolInterface
      *        
      * @return bool True if the item was successfully removed. False if there was an error.
      */
-    public function deleteItem($key)
+    public function deleteItem($key): bool
     {
         return true;
     }
@@ -109,7 +110,7 @@ final class NullCacheItemPool implements CacheItemPoolInterface
      *        
      * @return bool True if the items were successfully removed. False if there was an error.
      */
-    public function deleteItems(array $keys)
+    public function deleteItems(array $keys): bool
     {
         return true;
     }
@@ -122,7 +123,7 @@ final class NullCacheItemPool implements CacheItemPoolInterface
      *            
      * @return bool True if the item was successfully persisted. False if there was an error.
      */
-    public function save(CacheItemInterface $item)
+    public function save(CacheItemInterface $item): bool
     {
         return true;
     }
@@ -135,7 +136,7 @@ final class NullCacheItemPool implements CacheItemPoolInterface
      *            
      * @return bool False if the item could not be queued or if a commit was attempted and failed. True otherwise.
      */
-    public function saveDeferred(CacheItemInterface $item)
+    public function saveDeferred(CacheItemInterface $item): bool
     {
         return true;
     }
@@ -145,7 +146,7 @@ final class NullCacheItemPool implements CacheItemPoolInterface
      *
      * @return bool True if all not-yet-saved items were successfully saved or there were none. False otherwise.
      */
-    public function commit()
+    public function commit(): bool
     {
         return true;
     }
